@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerMask;
     public bool grounded;
 
+    //Spawning Bullet Prefab
+    public GameObject Bullet;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +25,20 @@ public class PlayerController : MonoBehaviour
         Grounded();
         Jump();
         Move();
+        Shoot();
     }
 
+    public void Shoot()
+    {
+        if (Input.GetMouseButtonDown(1)){
+            GameObject bulletInstance = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
 
+            if (bulletInstance != null){
+                Destroy(bulletInstance, 2f);
+            }
+        }
+    }
+    
     private void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && this.grounded)

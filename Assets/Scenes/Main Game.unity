@@ -829,6 +829,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   grounded: 0
+  Bullet: {fileID: 7695574577953803384, guid: a150a97818642434e9f0be80b923b167, type: 3}
 --- !u!1 &885115986
 GameObject:
   m_ObjectHideFlags: 0
