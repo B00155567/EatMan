@@ -12,11 +12,18 @@ public class PlayerController : MonoBehaviour
     //Spawning Bullet Prefab
     public GameObject Bullet;
 
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
+
 
     // Start is called before the first frame update
     void Start()
     {
         this.rb = GetComponent<Rigidbody>();
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -26,6 +33,19 @@ public class PlayerController : MonoBehaviour
         Jump();
         Move();
         Shoot();
+        Damage();
+    }
+
+    public void Damage() {
+        if (Input.GetKeyDown(KeyCode.D)) {
+            TakeDamage(20);
+        }
+    }
+
+    public void TakeDamage(int damage) {
+        currentHealth -= damage;
+
+        healthBar.SetHealth(currentHealth);
     }
 
     public void Shoot()
