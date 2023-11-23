@@ -7381,6 +7381,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d39a68237432ea41ae92c75eb21dcf4, type: 3}
+--- !u!1001 &1206126256
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672115176, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083180974672275912, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
+      propertyPath: m_Name
+      value: Gaz_Bottle_02 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 318b7b4a97f991049b4cb7e9b6743c17, type: 3}
 --- !u!1001 &1226400799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13854,3 +13915,4 @@ SceneRoots:
   - {fileID: 2047936834}
   - {fileID: 555527977}
   - {fileID: 596911376}
+  - {fileID: 1206126256}
