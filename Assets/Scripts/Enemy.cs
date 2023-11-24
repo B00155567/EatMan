@@ -13,8 +13,8 @@ private int health = 100;
 [SerializeField] 
 private float speed = 1f;
 
-//[SerializeField] 
-//private EnemyData data;
+[SerializeField] 
+private EnemyData data;
 
 [SerializeField] 
 private GameObject player;
