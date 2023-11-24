@@ -35,11 +35,12 @@ private GameObject player;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
-    private void private void OnTriggerEnter2D(Collider2D collider) {
-        if(collider.CompareTag("Player")){
-            if(collider.gameObject.GetComponent<Health>() != null){
-                collider.gameObject.GetComponent<Health>().Damage(damage);
-                this.getComponent<Health>().Damage(10000);
-                        
-    }
+    // private void OnTriggerEnter2D(Collider2D collider) {
+    //     if(collider.CompareTag("Player")){
+    //         if(collider.gameObject.GetComponent<Health>() != null){
+    //             collider.gameObject.GetComponent<Health>().Damage(damage);
+    //             this.getComponent<Health>().Damage(10000);
+    //         }
+    //     }
+    // }
 }
