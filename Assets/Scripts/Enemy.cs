@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private int damage = 5;
-    
     [SerializeField]
     private float speed = 1.5f;
 
@@ -36,19 +35,32 @@ public class Enemy : MonoBehaviour
     }
 
     private void Swarm()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    }
+{
+    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+}
 
-    private void OnTriggerEnter2D(Collider2D collider)
+
+    private void OnTriggerEnter(Collider collider)
+{
+    if (collider.CompareTag("Player"))
     {
-        if (collider.CompareTag("Player"))
+        Health playerHealth = collider.GetComponent<Health>();
+
+        if (playerHealth != null)
         {
-            if(collider.GetComponent<Health>() != null)
-            {
-                collider.GetComponent<Health>().Damage(damage);
-                this.GetComponent<Health>().Damage(10000);
-            }
+            playerHealth.Damage(damage);
         }
+
+        StartCoroutine(DestroyAfterDelay(1.0f)); // Adjust the delay as needed
     }
+}
+
+private IEnumerator DestroyAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+
+    // Destroy the enemy after the specified delay
+    Destroy(gameObject);
+}
+
 }
