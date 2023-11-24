@@ -5,23 +5,16 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 5;
-    [SerializeField]
-    private float speed = 1.5f;
-
-    [SerializeField]
     private EnemyData data;
 
     private GameObject player;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         SetEnemyValues();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Swarm();
@@ -30,37 +23,32 @@ public class Enemy : MonoBehaviour
     private void SetEnemyValues()
     {
         GetComponent<Health>().SetHealth(data.hp, data.hp);
-        damage = data.damage;
-        speed = data.speed;
+        // Set other enemy attributes using data
+        // Example:
+        // GetComponent<SomeComponent>().SetSomething(data.something);
     }
 
     private void Swarm()
-{
-    transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-}
-
-
-    private void OnTriggerEnter(Collider collider)
-{
-    if (collider.CompareTag("Player"))
     {
-        Health playerHealth = collider.GetComponent<Health>();
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, data.speed * Time.deltaTime);
 
-        if (playerHealth != null)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distanceToPlayer <= data.attackRange)
         {
-            playerHealth.Damage(damage);
+            Health playerHealth = player.GetComponent<Health>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.Damage(data.damage);
+                Die();
+            }
         }
-
-        StartCoroutine(DestroyAfterDelay(1.0f)); // Adjust the delay as needed
     }
-}
 
-private IEnumerator DestroyAfterDelay(float delay)
-{
-    yield return new WaitForSeconds(delay);
-
-    // Destroy the enemy after the specified delay
-    Destroy(gameObject);
-}
-
+    private void Die()
+    {
+        Debug.Log("Enemy died!");
+        Destroy(gameObject);
+    }
 }
