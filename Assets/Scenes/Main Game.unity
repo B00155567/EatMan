@@ -10777,7 +10777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  healthBar: {fileID: 199116940}
+  healthBar: {fileID: 0}
 --- !u!4 &876236420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339898394216490, guid: 84bb771a8038d2648bd2421451c4018d, type: 3}
@@ -24376,7 +24376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8236149766197209413, guid: ebdaaf693b83700409d20a2063a98d25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.5
+      value: -8.51
       objectReference: {fileID: 0}
     - target: {fileID: 8236149766197209413, guid: ebdaaf693b83700409d20a2063a98d25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -24384,7 +24384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8236149766197209413, guid: ebdaaf693b83700409d20a2063a98d25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.17
+      value: -4.25
       objectReference: {fileID: 0}
     - target: {fileID: 8236149766197209413, guid: ebdaaf693b83700409d20a2063a98d25, type: 3}
       propertyPath: m_LocalRotation.w
