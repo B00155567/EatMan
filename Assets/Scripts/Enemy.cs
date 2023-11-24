@@ -4,43 +4,51 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-[SerializeField] 
-private int damage = 10;
+    [SerializeField]
+    private int damage = 5;
+    
+    [SerializeField]
+    private float speed = 1.5f;
 
-[SerializeField] 
-private int health = 100;
+    [SerializeField]
+    private EnemyData data;
 
-[SerializeField] 
-private float speed = 1f;
+    private GameObject player;
 
-[SerializeField] 
-private EnemyData data;
-
-[SerializeField] 
-private GameObject player;
-
-
+    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        SetEnemyValues();
     }
 
     // Update is called once per frame
     void Update()
     {
-        FollowPlayer();
+        Swarm();
     }
 
-    private void FollowPlayer(){
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    private void SetEnemyValues()
+    {
+        GetComponent<Health>().SetHealth(data.hp, data.hp);
+        damage = data.damage;
+        speed = data.speed;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collider) {
-    //     if(collider.CompareTag("Player")){
-    //         if(collider.gameObject.GetComponent<Health>() != null){
-    //             collider.gameObject.GetComponent<Health>().Damage(damage);
-    //             this.getComponent<Health>().Damage(10000);
-    //         }
-    //     }
-    // }
+    private void Swarm()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            if(collider.GetComponent<Health>() != null)
+            {
+                collider.GetComponent<Health>().Damage(damage);
+                this.GetComponent<Health>().Damage(10000);
+            }
+        }
+    }
 }
