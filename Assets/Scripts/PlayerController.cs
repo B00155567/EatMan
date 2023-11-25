@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     public void Shoot()
     {
         if (Input.GetMouseButtonDown(1)){
-            GameObject bulletInstance = Instantiate(Bullet, transform.position, Bullet.transform.rotation);
+            GameObject bulletInstance = Instantiate(Bullet, transform.position + new Vector3(0, 3, 0), Bullet.transform.rotation);
 
             if (bulletInstance != null){
                 Destroy(bulletInstance, 2f);

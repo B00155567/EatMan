@@ -32,6 +32,13 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, data.speed * Time.deltaTime);
 
+        //transform.LookAt(player.transform);
+
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        directionToPlayer.y = 0; // Ignore vertical difference
+        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, data.rotationSpeed * Time.deltaTime);
+
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         if (distanceToPlayer <= data.attackRange)
