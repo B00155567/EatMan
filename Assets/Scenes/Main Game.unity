@@ -10773,7 +10773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 199116940}
 --- !u!4 &876236420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339898394216490, guid: 84bb771a8038d2648bd2421451c4018d, type: 3}
