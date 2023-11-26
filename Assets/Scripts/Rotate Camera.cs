@@ -8,6 +8,13 @@ public class TransformFollower : MonoBehaviour
 
 	[SerializeField]
 	private Vector3 offsetPosition;
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        //transform.Rotate(Vector3.up, horizontalInput * speed * Time.deltaTime);
+        transform.RotateAround(player.transform.position, Vector3.up, horizontalInput * speed * Time.deltaTime);
+
 
 	[SerializeField]
 	private Space offsetPositionSpace = Space.Self;
