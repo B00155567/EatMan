@@ -90,12 +90,34 @@ public class PlayerController : MonoBehaviour
         float verticalAxis = Input.GetAxis("Vertical");
         float horizontalAxis = Input.GetAxis("Horizontal");
 
-        Vector3 movement = this.transform.forward * verticalAxis + this.transform.right * horizontalAxis;
+        // Get the camera's forward and right directions
+        Vector3 cameraForward = camera.transform.forward;
+        Vector3 cameraRight = camera.transform.right;
+
+        // Project the camera directions onto the horizontal plane to disregard vertical rotation
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        // Normalize the vectors to ensure consistent speed in all directions
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Calculate the movement vector based on input and camera directions
+        Vector3 movement = cameraForward * verticalAxis + cameraRight * horizontalAxis;
         movement.Normalize();
 
-        this.transform.position += movement * 0.1f;
+        // Update the position based on whether isKinematic is true or false
+        if (rb.isKinematic)
+        {
+            this.transform.position += movement * 0.1f;
+        }
+        else
+        {
+            rb.AddForce(movement * 1.0f, ForceMode.Impulse);
+        }
 
         //this.anim.SetFloat("vertical", verticalAxis);
         //this.anim.SetFloat("horizontal", horizontalAxis);
     }
+
 }
