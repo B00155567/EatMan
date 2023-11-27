@@ -20,21 +20,17 @@ public class Bullet : MonoBehaviour
         return damage;
     }
 
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+    if (other.CompareTag("Enemy"))
+    {
+        Enemy enemy = other.GetComponent<Enemy>();
+
+        if (enemy != null)
         {
-            // Check if the collided object has a Health component
-            Health enemyHealth = other.GetComponent<Health>();
-
-            if (enemyHealth != null)
-            {
-                // Deal damage to the enemy
-                enemyHealth.Damage(damage);
-
-                // Destroy the bullet
-                Destroy(gameObject);
-            }
+            enemy.Die();
         }
+    }
+
     }
 }

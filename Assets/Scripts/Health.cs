@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    [SerializeField] public int health1 = 100;
     private int MAX_HEALTH = 100;
 
     public HealthBar healthBar; // Reference to the HealthBar script
@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Damage(10);
+            Damage(100);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
     public void SetHealth(int maxHealth, int health)
     {
         this.MAX_HEALTH = maxHealth;
-        this.health = health;
+        this.health1 = health1;
         UpdateHealthBar();
     }
 
@@ -38,9 +38,9 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative Damage");
         }
 
-        this.health -= amount;
+        this.health1 -= amount;
 
-        if (health <= 0)
+        if (health1 <= 0)
         {
             Die();
         }
@@ -55,15 +55,15 @@ public class Health : MonoBehaviour
             throw new System.ArgumentOutOfRangeException("Cannot have negative healing");
         }
 
-        bool wouldBeOverMaxHealth = health + amount > MAX_HEALTH;
+        bool wouldBeOverMaxHealth = health1 + amount > MAX_HEALTH;
 
         if (wouldBeOverMaxHealth)
         {
-            this.health = MAX_HEALTH;
+            this.health1 = MAX_HEALTH;
         }
         else
         {
-            this.health += amount;
+            this.health1 += amount;
         }
 
         UpdateHealthBar();
@@ -73,7 +73,7 @@ public class Health : MonoBehaviour
     {
         if (healthBar != null)
         {
-            healthBar.SetHealth(health);
+            healthBar.SetHealth(health1);
         }
     }
 

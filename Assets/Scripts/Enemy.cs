@@ -1,5 +1,5 @@
+// Enemy.cs
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,32 +7,56 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private EnemyData data;
 
-    private GameObject player;
+    private Player player; // Change the type to Player
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        // Find the player GameObject by tag
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Respawn");
+
+        if (playerObject != null)
+        {
+            // Get the Player component from the player GameObject
+            player = playerObject.GetComponent<Player>();
+        }
+        else
+        {
+            Debug.LogError("Player not found!");
+        }
+
         SetEnemyValues();
     }
 
     void Update()
     {
         Swarm();
+
+        if(GetComponent<Collider>().CompareTag("Bullet")){
+            Die();
+        }
     }
 
     private void SetEnemyValues()
     {
-        GetComponent<Health>().SetHealth(data.hp, data.hp);
-        // Set other enemy attributes using data
-        // Example:
-        // GetComponent<SomeComponent>().SetSomething(data.something);
+            if (player != null) 
+            {
+                // Check if player is not null before setting values
+                GetComponent<Health>().SetHealth(data.hp, data.hp);
+            }
+            else
+            {
+                Debug.LogError("Player reference is null. Cannot set enemy values.");
+            }
     }
-
     private void Swarm()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, data.speed * Time.deltaTime);
+        if (player == null)
+        {
+            Debug.LogError("Player reference is null. Cannot swarm.");
+            return;
+        }
 
-        //transform.LookAt(player.transform);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, data.speed * Time.deltaTime);
 
         Vector3 directionToPlayer = player.transform.position - transform.position;
         directionToPlayer.y = 0; // Ignore vertical difference
@@ -43,17 +67,14 @@ public class Enemy : MonoBehaviour
 
         if (distanceToPlayer <= data.attackRange)
         {
-            Health playerHealth = player.GetComponent<Health>();
-
-            if (playerHealth != null)
-            {
-                playerHealth.Damage(data.damage);
-                Die();
-            }
+            // Inflict damage to the player
+            player.Damage(data.damage);
+            Debug.Log("Player hit!");
+            Die();
         }
     }
 
-    private void Die()
+    public void Die()
     {
         Debug.Log("Enemy died!");
         Destroy(gameObject);
