@@ -9,6 +9,8 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform player;
     public Transform playerObj;
     public Rigidbody rb;
+    public float moveSpeed = 10f; // Adjust the value according to your preference
+
 
     public float rotationSpeed;
 
@@ -44,15 +46,19 @@ public class ThirdPersonCam : MonoBehaviour
         orientation.forward = viewDir.normalized;
 
         // roate player object
-        if(currentStyle == CameraStyle.Basic || currentStyle == CameraStyle.Topdown)
+        if (currentStyle == CameraStyle.Basic || currentStyle == CameraStyle.Topdown)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
             Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-            if (inputDir != Vector3.zero)
-                playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            // Normalize the input direction to ensure consistent speed in all directions
+            inputDir = inputDir.normalized;
+
+            // Apply force to move the player in the desired direction
+            rb.AddForce(inputDir * moveSpeed); // Adjust 'moveSpeed' according to your preference
         }
+
 
         else if(currentStyle == CameraStyle.Combat)
         {
