@@ -6605,7 +6605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502048396}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.4059437, y: 0.20881318, z: 0.09583029, w: 0.884547}
+  m_LocalRotation: {x: -0.4059437, y: 0.20881322, z: 0.09583032, w: 0.884547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16436,11 +16436,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1316257171}
   - component: {fileID: 1316257172}
-  - component: {fileID: 1316257174}
-  - component: {fileID: 1316257173}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16485,45 +16483,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1316257173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316257170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e51451fb4de06047afba9f0c35ee861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  healthBar: {fileID: 199116940}
---- !u!114 &1316257174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1316257170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 973a33f3e197d4e4ab4ebf1250c12919, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
-  grounded: 1
-  Bullet: {fileID: 7695574577953803384, guid: a150a97818642434e9f0be80b923b167, type: 3}
-  maxHealth: 100
-  currentHealth: 100
-  healthBar: {fileID: 199116940}
 --- !u!4 &1318015142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339898394216490, guid: 7d39a68237432ea41ae92c75eb21dcf4, type: 3}
