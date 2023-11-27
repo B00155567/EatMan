@@ -15,17 +15,15 @@ public class TransformFollower : MonoBehaviour
         //transform.Rotate(Vector3.up, horizontalInput * speed * Time.deltaTime);
         transform.RotateAround(player.transform.position, Vector3.up, horizontalInput * speed * Time.deltaTime);
 
+		Refresh();
 
+	}
+	
 	[SerializeField]
 	private Space offsetPositionSpace = Space.Self;
 
 	[SerializeField]
 	private bool lookAt = true;
-
-	private void Update()
-	{
-		Refresh();
-	}
 
 	public void Refresh()
 	{
