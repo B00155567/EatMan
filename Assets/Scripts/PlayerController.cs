@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator anim;
+    //public Animator anim;
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             this.grounded = false;
         }
-        this.anim.SetBool("jump", this.grounded);
+        //this.anim.SetBool("jump", this.grounded);
     }
 
     private void Move()
@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
         this.transform.position += movement * 0.04f;
 
-        this.anim.SetFloat("vertical", verticalAxis);
-        this.anim.SetFloat("horizontal", horizontalAxis);
+        //this.anim.SetFloat("vertical", verticalAxis);
+        //this.anim.SetFloat("horizontal", horizontalAxis);
     }
 }
