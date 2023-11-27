@@ -15,5 +15,5 @@ MonoBehaviour:
   hp: 100
   damage: 20
   speed: 4
-  attackRange: 0.5
+  attackRange: 1.5
   rotationSpeed: 0

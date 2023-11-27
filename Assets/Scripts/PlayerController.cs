@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Animator anim;
+    //public Animator anim;
     private Rigidbody rb;
     public LayerMask layerMask;
     public bool grounded;
@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+
+    public Camera camera;
 
 
     // Start is called before the first frame update
@@ -51,7 +53,10 @@ public class PlayerController : MonoBehaviour
     public void Shoot()
     {
         if (Input.GetMouseButtonDown(1)){
-            GameObject bulletInstance = Instantiate(Bullet, transform.position + new Vector3(0, 3, 0), Bullet.transform.rotation);
+            Vector3 cameraForward = new Vector3(camera.transform.forward.x, 0f, camera.transform.forward.z).normalized;
+
+            GameObject bulletInstance = Instantiate(Bullet, transform.position + cameraForward * 2, Quaternion.LookRotation(cameraForward));
+
 
             if (bulletInstance != null){
                 Destroy(bulletInstance, 2f);
@@ -77,7 +82,7 @@ public class PlayerController : MonoBehaviour
         {
             this.grounded = false;
         }
-        this.anim.SetBool("jump", this.grounded);
+        //this.anim.SetBool("jump", this.grounded);
     }
 
     private void Move()
@@ -88,9 +93,9 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = this.transform.forward * verticalAxis + this.transform.right * horizontalAxis;
         movement.Normalize();
 
-        this.transform.position += movement * 0.04f;
+        this.transform.position += movement * 0.1f;
 
-        this.anim.SetFloat("vertical", verticalAxis);
-        this.anim.SetFloat("horizontal", horizontalAxis);
+        //this.anim.SetFloat("vertical", verticalAxis);
+        //this.anim.SetFloat("horizontal", horizontalAxis);
     }
 }
